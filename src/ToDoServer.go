@@ -5,8 +5,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/gorilla/mux"
 	"weekend_project/Todo-golang/src/services"
+
+	"github.com/gorilla/mux"
 )
 
 var td = services.NewToDoService()
@@ -39,7 +40,7 @@ func handleRequest() {
 	myRouter.HandleFunc("/todo/{id}", td.HandleGetToDoItem).Methods(http.MethodGet)        //Get mapping
 	myRouter.HandleFunc("/todo/{id}", td.HandlePatchToDoItem).Methods(http.MethodPatch)    //Patch  mapping
 
-	log.Fatal(http.ListenAndServe("localhost:8080", myRouter))
+	log.Fatal(http.ListenAndServe(":90", myRouter))
 }
 
 func main() {
